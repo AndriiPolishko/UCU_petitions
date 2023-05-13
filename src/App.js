@@ -1,28 +1,8 @@
 import './App.css';
 import PageLayout from './PageLayout/PageLayout';
 import PetitionPage from './PetitionPage/PetitionPage';
+import Petition from './Petition/Petition';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-const testPetition = {
-  Id: 1,
-  name: 'Sample',
-  author: 'Andrii',
-  date: '15.05.2023',
-  longDescription: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id reprehenderit magnam, corporis laudantium delectus repellat \
-    sit nobis corrupti praesentium quibusdam maxime pariatur sunt explicabo accusantium debitis necessitatibus perspiciatis \
-    esse consequatur?`,
-  signers: `FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, 
-    FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, 
-    FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, 
-    FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, 
-    FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, 
-    FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, 
-    FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, 
-    FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name, FirtsName Second Name `,
-  signs: 123,
-  signsNeeded: 321,
-  status: 'Очікування',
-};
 
 const router = createBrowserRouter([
   {
@@ -31,11 +11,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>All Petitions Page</div>,
+        element: <Petition />,
       },
       {
         path: 'considered',
-        element: <PetitionPage petition={testPetition} />,
+        element: <div>considered</div>,
       },
       {
         path: 'answered',
@@ -45,16 +25,20 @@ const router = createBrowserRouter([
         path: 'user-petitions',
         element: <div>Created/Signed User Petitions Page</div>,
       },
+      {
+        path: 'petition/:id',
+        element: <PetitionPage />,
+      },
+      {
+        path: 'petition-form',
+        element: <PetitionForm />,
+      },
     ],
   },
 ]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header"></header>
-      <PetitionPage></PetitionPage>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
+
 export default App;
