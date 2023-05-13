@@ -1,0 +1,25 @@
+.main {
+  width: 100vw;
+  height: fit-content;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  width: 100%;
+  padding: 20px 35px;
+  background-color: #7F1716;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+footer {
+  width: 100%;
+  padding: 20px 35px;
+  margin-bottom: 0;
+  background-color: #424141;
+}
