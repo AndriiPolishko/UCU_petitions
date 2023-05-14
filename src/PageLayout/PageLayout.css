@@ -10,14 +10,30 @@
 header {
   width: 100%;
   padding: 20px 35px;
-  background-color: #7F1716;
+  background-color: #7f1716;
 }
 
 .header-logo {
   width: 165px;
 }
 
-.content {
+.navigation-wrapper {
+}
+
+/* NavLink {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #d9baba;
+}
+
+NavLink.active {
+  text-decoration-line: underline;
+  color: #f5efe3;
+} */
+
+Outlet {
   flex-grow: 1;
 }
 

@@ -5,28 +5,30 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>All Petitions</div>,
-  },
-  {
-    path: "/considered",
-    element: <div>Considered Petitions</div>,
-  },
-  {
-    path: "/answered",
-    element: <div>Answered Petitions</div>,
-  },
-  {
-    path: "/user-petitions",
-    element: "My Petitions",
+    element: <PageLayout />,
+    children: [
+      {
+        index: true,
+        element: <div>All Petitions Page</div>
+      },
+      {
+        path: "considered",
+        element: <div>Considered Petitions Page</div>,
+      },
+      {
+        path: "answered",
+        element: <div>Answered Petitions Page</div>,
+      },
+      {
+        path: "user-petitions",
+        element: <div>Created/Signed User Petitions Page</div>,
+      },
+    ],
   },
 ]);
 
 function App() {
-  return (
-    <PageLayout>
-      <RouterProvider router={router} />
-    </PageLayout>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
