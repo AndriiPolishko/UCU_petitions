@@ -13,6 +13,10 @@ header {
   background-color: #7F1716;
 }
 
+.header-logo {
+  width: 165px;
+}
+
 .content {
   flex-grow: 1;
 }
