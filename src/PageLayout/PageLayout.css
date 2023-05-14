@@ -11,6 +11,9 @@ header {
   width: 100%;
   padding: 20px 35px;
   background-color: #7f1716;
+  display: flex;
+  justify-content: space-between;
+  gap: 120px;
 }
 
 .header-logo {
@@ -18,20 +21,38 @@ header {
 }
 
 .navigation-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
 }
 
-/* NavLink {
+.buttons-wraper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px; 
+}
+
+a {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   text-transform: uppercase;
+  text-decoration-color: transparent;
   color: #d9baba;
 }
 
-NavLink.active {
-  text-decoration-line: underline;
+a:hover {
+  text-decoration-color: #f5efe3;
   color: #f5efe3;
-} */
+  transition-duration: 1000ms;
+}
+
+a.active {
+  text-decoration-color: transparent;
+  color: #f5efe3;
+}
 
 Outlet {
   flex-grow: 1;

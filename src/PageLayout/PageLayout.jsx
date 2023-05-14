@@ -2,6 +2,7 @@ import React from "react";
 import "./PageLayout.css";
 import "../App.css";
 import logo from "../media/ucu_logo.svg";
+import loginIcon from "../media/login_icon.svg";
 import { NavLink, Outlet } from "react-router-dom";
 
 function PageLayout(props) {
@@ -16,7 +17,7 @@ function PageLayout(props) {
               isActive ? "active" : isPending ? "pending" : ""
             }
           >
-            Усі петиції
+            <nav>Усі петиції</nav>
           </NavLink>
           <NavLink
             to="/considered"
@@ -24,7 +25,7 @@ function PageLayout(props) {
               isActive ? "active" : isPending ? "pending" : ""
             }
           >
-            На розгляді
+            <nav>На розгляді</nav>
           </NavLink>
           <NavLink
             to="/answered"
@@ -32,7 +33,7 @@ function PageLayout(props) {
               isActive ? "active" : isPending ? "pending" : ""
             }
           >
-            Відповіді
+            <nav>Відповіді</nav>
           </NavLink>
           <NavLink
             to={"/user-petitions"}
@@ -40,8 +41,14 @@ function PageLayout(props) {
               isActive ? "active" : isPending ? "pending" : ""
             }
           >
-            Мої петиції
+            <nav>Мої петиції</nav>
           </NavLink>
+        </div>
+        <div className="buttons-wrapper">
+          <button>НОВА ПЕТИЦІЯ</button>
+          <button>
+            <img src={loginIcon} />
+          </button>
         </div>
       </header>
       <Outlet />
