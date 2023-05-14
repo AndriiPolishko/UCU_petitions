@@ -31,10 +31,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px; 
+  gap: 30px;
 }
 
-a {
+.navlink {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -43,13 +43,13 @@ a {
   color: #d9baba;
 }
 
-a:hover {
+.navlink:hover {
   text-decoration-color: #f5efe3;
   color: #f5efe3;
   transition-duration: 1000ms;
 }
 
-a.active {
+.navlink.active {
   text-decoration-color: transparent;
   color: #f5efe3;
 }
@@ -63,4 +63,22 @@ footer {
   padding: 20px 35px;
   margin-bottom: 0;
   background-color: #424141;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.footerGroup {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.footerGroup * {
+  display: block;
+  color: #FFFFFF;
+}
+
+.footerGroup h4 {
+  margin-top: 0; 
 }
