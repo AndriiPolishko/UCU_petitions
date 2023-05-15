@@ -1,5 +1,4 @@
 import './App.css';
-
 import PageLayout from './PageLayout/PageLayout';
 import PetitionPage from './PetitionPage/PetitionPage';
 import Petition from './Petition/Petition';
@@ -29,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'petition/:id',
         element: <PetitionPage />,
+      },
+      {
+        path: "petition-form",
+        element: <PetitionForm />,
       },
     ],
   },
