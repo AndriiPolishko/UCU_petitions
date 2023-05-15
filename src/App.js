@@ -1,6 +1,7 @@
 import './App.css';
 import PageLayout from './PageLayout/PageLayout';
 import PetitionPage from './PetitionPage/PetitionPage';
+import PetitionForm from './PetitionForm/PetitionForm';
 import Petition from './Petition/Petition';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
