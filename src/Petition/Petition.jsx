@@ -1,8 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Petition.css";
 import person from "../media/person.svg";
 import plus from "../media/plus.svg";
+import Button from "../Button/Button";
 
 const Petition = () => {
   return (
@@ -16,9 +17,7 @@ const Petition = () => {
               <span className="pet-tag">#Без теми</span>
             </div>
             <div className="pet-title">
-              <a className="pet-link" href="/petition/192830">
-                ТУТ МАЄ БУТИ ЗАГОЛОВОК.
-              </a>
+              <h2 className="pet-link">ТУТ МАЄ БУТИ ЗАГОЛОВОК.</h2>
             </div>
             <div className="pet-hide">
               <div className="pet-date-container">
@@ -51,9 +50,9 @@ const Petition = () => {
                 Триває збір підписів
               </div>
               <div className="pet-timer">Залишилося 93 дні</div>
-              <div className="pet-hide">
-                <a className="pet-btn">В ОБРАНЕ</a>
-              </div>
+              <Button>
+                <span className="button-text">В ОБРАНЕ</span>
+              </Button>
             </div>
           </div>
         </div>

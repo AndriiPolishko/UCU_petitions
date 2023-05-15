@@ -1,5 +1,4 @@
 .pet-item {
-    position: relative;
     border-bottom: 1px solid rgba(204, 204, 204, .50);
     font-size: 1.125rem;
 }
@@ -9,30 +8,14 @@
 }
 
 .pet-content:hover {
-    position: absolute;
-    min-width: calc(100% + 1.25rem);
-    top: 0;
-    left: 0;
-    background: #fff;
-    margin: -0.625rem -1.25rem 0;
-    padding: 1.5625rem 1.25rem 50px;
+    background: #ffffff;
     box-shadow: inset 0 15px 15px rgba(204, 204, 204, .12), 0 20px 20px rgba(0, 0, 0, .25);
     z-index: 9;
 }
 
-.pet-hide:hover {
-    display: block;
-}
-
 .pet-content {
     display: flex;
-    padding: 0.9375rem 0 2.5rem;
-}
-
-.pet-content:after {
-    content: '';
-    display: table;
-    clear: both;
+    padding: 15px 20px 50px;
 }
 
 .pet-left, .pet-right {
@@ -190,3 +173,6 @@
     max-width: 13.125rem;
 }
 
+.button-text {
+    line-height: 30px;
+}
