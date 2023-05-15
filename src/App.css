@@ -16,8 +16,3 @@ html {
 img {
   display: block;
 }
-
-.green {
-  background-color: var(--green);
-  color: var(--white);
-}
