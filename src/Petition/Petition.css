@@ -1,0 +1,192 @@
+.pet-item {
+    position: relative;
+    border-bottom: 1px solid rgba(204, 204, 204, .50);
+    font-size: 1.125rem;
+}
+
+.pet-item:hover {
+    border-bottom-color: transparent;
+}
+
+.pet-content:hover {
+    position: absolute;
+    min-width: calc(100% + 1.25rem);
+    top: 0;
+    left: 0;
+    background: #fff;
+    margin: -0.625rem -1.25rem 0;
+    padding: 1.5625rem 1.25rem 50px;
+    box-shadow: inset 0 15px 15px rgba(204, 204, 204, .12), 0 20px 20px rgba(0, 0, 0, .25);
+    z-index: 9;
+}
+
+.pet-hide:hover {
+    display: block;
+}
+
+.pet-content {
+    display: flex;
+    padding: 0.9375rem 0 2.5rem;
+}
+
+.pet-content:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.pet-left, .pet-right {
+    position: relative;
+    float: left;
+    min-height: 1px;
+}
+
+.pet-left {
+    width: 69%;
+    padding-right: 2.5rem;
+}
+
+.pet-right {
+    width: 31%;
+}
+
+.pet-separator {
+    padding: 0 0.75rem;
+    color: #cccccc;
+}
+
+.pet-title {
+    padding: 1rem 0 0;
+}
+
+.pet-link {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.5rem;
+    line-height: 1.25;
+}
+
+.pet-link:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.pet-hide .pet-date-container {
+    padding: 1.875rem 0 0;
+}
+
+.pet-date {
+    position: relative;
+    padding: 0 0 0 1.25rem;
+    font-size: 0.875rem;
+}
+
+.pet-date .fa {
+    position: absolute;
+    top: 0.3125rem;
+    left: 0;
+    color: #ffcc00;
+}
+
+.pet-stepper {
+    padding: 0.3125rem 0 0;
+}
+
+.pet-counts {
+    position: relative;
+    padding-right: 3.75rem;
+    font-size: 0.75rem;
+    color: #929292;
+}
+
+.pet-counts strong {
+    font-size: 2.25rem;
+    font-weight: normal;
+    color: #333;
+    margin-right: 0.625rem;
+}
+
+.pet-progress {
+    padding: 0.625rem 0 0;
+}
+
+.progress-full {
+    position: relative;
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    overflow: hidden;
+    background: rgba(204, 204, 204, .50);
+}
+
+.progress-current {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #cc3333;
+}
+
+.pet-status {
+    position: relative;
+    margin: 0.625rem 0 0;
+    padding-left: 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.78;
+}
+
+.fa-plus {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 0;
+}
+
+.pet-status-icon {
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+}
+
+.pet-timer {
+    padding: 1.875rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.78;
+}
+
+.pet-date-container {
+    padding: 1.875rem 0 0;
+}
+
+.pet-btn {
+    display: inline-block;
+    margin: 1.5625rem 0 0;
+    padding: 0.5rem 1.375rem;
+    border-radius: 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.78;
+    color: #ececec;
+    text-transform: uppercase;
+    text-align: center;
+    background: #cc3333;
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+.pet-btn:hover,
+.pet-btn:focus {
+    color: #ececec;
+}
+
+.pet-btn:hover {
+    opacity: 70%;
+}
+
+.pet-btn.long {
+    width: 100%;
+    max-width: 13.125rem;
+}
+
