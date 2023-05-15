@@ -11,7 +11,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Petition />,
+        element: (
+          <div>
+            <Petition />
+          </div>
+        ),
       },
       {
         path: 'considered',

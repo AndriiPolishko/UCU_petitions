@@ -3,10 +3,16 @@ import "./PageLayout.css";
 import "../App.css";
 import logo from "../media/ucu_logo.svg";
 import loginIcon from "../media/login_icon.svg";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 
 function PageLayout(props) {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/petition-form");
+  };
+
   return (
     <div className="main">
       <header>
@@ -73,7 +79,11 @@ function PageLayout(props) {
           </NavLink>
         </div>
         <div className="buttons-wrapper">
-          <Button><span className="button-text">НОВА ПЕТИЦІЯ</span></Button>
+          <Button>
+            <span className="button-text" onClick={handleButtonClick}>
+              НОВА ПЕТИЦІЯ
+            </span>
+          </Button>
           <Button>
             <img src={loginIcon} />
           </Button>
