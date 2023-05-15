@@ -27,6 +27,21 @@ function PetitionPage() {
       signsNeeded: 321,
       status: 'Очікування',
     },
+    {
+      id: 2,
+      name: 'Sample 2',
+      author: 'Roman',
+      date: '15.05.2320',
+      longDescription: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.`,
+      signers: [
+        'first name second name',
+        'first name second name',
+        'first name second name',
+      ],
+      signs: 3,
+      signsNeeded: 100,
+      status: 'Очікування',
+    },
   ];
 
   const petition = petitions.find((obj) => obj.id === +id);
