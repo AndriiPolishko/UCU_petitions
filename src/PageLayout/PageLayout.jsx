@@ -79,8 +79,8 @@ function PageLayout(props) {
           </NavLink>
         </div>
         <div className="buttons-wrapper">
-          <Button>
-            <span className="button-text" onClick={handleButtonClick}>
+          <Button  onClick={handleButtonClick}>
+            <span className="button-text">
               НОВА ПЕТИЦІЯ
             </span>
           </Button>
