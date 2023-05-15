@@ -1,28 +1,33 @@
-import "./App.css";
-import PageLayout from "./PageLayout/PageLayout";
-import PetitionForm from "./PetitionForm/PetitionForm";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import './App.css';
+import PageLayout from './PageLayout/PageLayout';
+import PetitionPage from './PetitionPage/PetitionPage';
+import Petition from './Petition/Petition';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <PageLayout />,
     children: [
       {
         index: true,
-        element: <div>All Petitions Page</div>,
+        element: <Petition />,
       },
       {
-        path: "considered",
-        element: <div>Considered Petitions Page</div>,
+        path: 'considered',
+        element: <div>considered</div>,
       },
       {
-        path: "answered",
+        path: 'answered',
         element: <div>Answered Petitions Page</div>,
       },
       {
-        path: "user-petitions",
+        path: 'user-petitions',
         element: <div>Created/Signed User Petitions Page</div>,
+      },
+      {
+        path: 'petition/:id',
+        element: <PetitionPage />,
       },
       {
         path: "petition-form",
