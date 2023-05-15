@@ -30,7 +30,7 @@ function PetitionForm() {
       <h2>Створити електронну петицію УКУ</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="theme">Суть звернення:</label>
+          <label htmlFor="theme">Назва петиції:</label>
           <textarea
             class="petitioin-textarea"
             id="theme"
