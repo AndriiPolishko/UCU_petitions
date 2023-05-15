@@ -1,10 +1,23 @@
+:root {
+  --green: rgb(0, 130, 15);
+  --white: rgb(255, 255, 255);
+}
+
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 img {
   display: block;
+}
+
+.green {
+  background-color: var(--green);
+  color: var(--white);
 }
