@@ -25,6 +25,10 @@
   grid-row: 2;
 }
 
+.petitionData>* {
+  margin-bottom: 25px;
+}
+
 .importantInfo {
   grid-column: span 1;
   grid-row: 2;
@@ -39,6 +43,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.buttonContainer {
+  display: flex;
+
 }
 
 .petitionGist {}
