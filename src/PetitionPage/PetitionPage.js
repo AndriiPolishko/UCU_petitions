@@ -1,31 +1,47 @@
-import React from 'react';
+import { useState } from 'react';
+import './PetitionPage.css';
 
-function PetitionPage() {
+function PetitionPage({ petition }) {
+  const [textOrSigners, setTextOrSigners] = useState(1);
   return (
-    <>
+    <div className="petitionPage-container">
+      <h3 className="petitionId">№{petition.Id}</h3>
       <section className="petitionData">
-        <p>petition.Id</p>
-        <p>petition.name</p>
-        <p>petition.author</p>
+        <h1>{petition.name}</h1>
+        <p>Автор: {petition.author}</p>
+        <p className="date">Дата публікації:{petition.date}</p>
         <div className="textAndSigners">
           <div className="buttonContainer">
-            <button></button>
-            <button></button>
+            <button
+              onClick={() => {
+                setTextOrSigners(1);
+              }}
+            >
+              Текст публікації
+            </button>
+            <button
+              onClick={() => {
+                setTextOrSigners(0);
+              }}
+            >
+              Підписанти
+            </button>
           </div>
-          <div className="textContainer">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim,
-            magnam! Excepturi accusamus, molestias corporis est perspiciat is at
-            illo saepe eos odio error tempore, veniam quibusdam sint possimus
-            aspernatur, illum ullam.
-          </div>
+          {textOrSigners === 1 ? (
+            <div className="textContainer">{petition.longDescription}</div>
+          ) : (
+            <div className="textContainer">{petition.signers}</div>
+          )}
         </div>
       </section>
       <section className="importantInfo">
         <div className="importantDataContainer">
           <div className="importantDataContainer_text">
-            <p>Кількість підписів / Потрібна кількість підписів</p>
-            <p>Статус</p>
-            <p>Залишилось часу</p>
+            <p>
+              {petition.signs} / {petition.signsNeeded}
+            </p>
+            <p>Статус: {petition.status}</p>
+            <p>Залишилось часу: Lorem</p>
           </div>
           <button className="button">Підписати</button>
         </div>
@@ -39,7 +55,7 @@ function PetitionPage() {
           <button className="">Додати в обране</button>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
