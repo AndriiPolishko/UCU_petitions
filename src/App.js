@@ -1,5 +1,6 @@
 import "./App.css";
 import PageLayout from "./PageLayout/PageLayout";
+import PetitionForm from "./PetitionForm/PetitionForm";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -9,7 +10,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>All Petitions Page</div>
+        element: <div>All Petitions Page</div>,
       },
       {
         path: "considered",
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "user-petitions",
         element: <div>Created/Signed User Petitions Page</div>,
+      },
+      {
+        path: "petition-form",
+        element: <PetitionForm />,
       },
     ],
   },
