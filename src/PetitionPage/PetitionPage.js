@@ -46,7 +46,7 @@ function PetitionPage() {
             </button>
           </div>
           {textOrSigners === 1 ? (
-            <div className="textContainer">{(petition && petition.body) && petition.body}</div>
+            <div className="textContainer">{(petition && petition.description) && petition.description}</div>
           ) : (
             <div className="textContainer">{petition && petition.voters && petition.voters.map(voter => <li key={voter.id}>{voter.name}</li>)}</div>
           )}
