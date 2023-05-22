@@ -50,4 +50,9 @@
 
 }
 
+.green {
+  background-color: var(--green);
+  color: var(--white);
+}
+
 .petitionGist {}
