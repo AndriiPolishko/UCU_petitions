@@ -6,7 +6,7 @@ function ConsideredPetitionsContainer() {
   const [petitions, setPetitions] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/petitions/in_process?sort=vote`, {method: "GET"})
+    fetch(`${process.env.REACT_APP_BASE_URL}/in_process?sort=vote`, {method: "GET"})
       .then((response) => response.json())
       .then((json) => {
         setPetitions(json.petitions);

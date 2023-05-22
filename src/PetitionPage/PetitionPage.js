@@ -8,7 +8,7 @@ function PetitionPage() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/petitions/${id}`)
+    fetch(`${process.env.REACT_APP_BASE_URL}/${id}`)
       .then((response) => response.json())
       .then((json) => {
         setPetition(json.petition);
