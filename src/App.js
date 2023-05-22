@@ -2,6 +2,7 @@ import './App.css';
 import PageLayout from './PageLayout/PageLayout';
 import PetitionPage from './PetitionPage/PetitionPage';
 import PetitionForm from './PetitionForm/PetitionForm';
+import AllPetitionsContainer from './PetitionContainers/AllPetitionsContainer';
 import Petition from './Petition/Petition';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -13,9 +14,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <div>
-            <Petition />
-          </div>
+          <AllPetitionsContainer />
         ),
       },
       {
