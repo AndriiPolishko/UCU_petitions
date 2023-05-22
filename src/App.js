@@ -12,7 +12,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Petition />,
+        element: (
+          <div>
+            <Petition />
+          </div>
+        ),
       },
       {
         path: 'considered',
@@ -31,7 +35,7 @@ const router = createBrowserRouter([
         element: <PetitionPage />,
       },
       {
-        path: "petition-form",
+        path: 'petition-form',
         element: <PetitionForm />,
       },
     ],
