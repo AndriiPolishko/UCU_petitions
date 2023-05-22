@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import './PetitionPage.css';
 
 function PetitionPage() {
-  const [testPost, setTestPost] = useState({});
   const [petition, setPetition] = useState([]);
 
   const { id } = useParams();
@@ -31,18 +30,13 @@ function PetitionPage() {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then((response) => response.json())
       .then((json) => {
-        setTestPost(json);
+        console.log(json);
+        setPetition({...fillerObj, ...json});
       })
       .catch((error) => {
         console.log('Error:', error);
       });
   }, []);
-
-  useEffect(() => {
-    if (testPost) {
-      setPetition({ ...testPost, ...fillerObj });
-    }
-  }, [testPost]);
 
   const [textOrSigners, setTextOrSigners] = useState(1);
   return (
@@ -72,7 +66,7 @@ function PetitionPage() {
             </button>
           </div>
           {textOrSigners === 1 ? (
-            <div className="textContainer">{petition.longDescription}</div>
+            <div className="textContainer">{petition.body}</div>
           ) : (
             <div className="textContainer">{petition.signers}</div>
           )}
@@ -91,10 +85,7 @@ function PetitionPage() {
         </div>
         <div className="petitionGist ">
           <p className="petitionGist_text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-            dolorum quisquam moles tias! Provident necessitatibus iusto rem
-            doloremque blanditi is minus, fugit delectus impe dit a saepe
-            quaerat doloribus eos, voluptas voluptates excepturi?
+            {petition.body}
           </p>
           <button className="">Додати в обране</button>
         </div>
