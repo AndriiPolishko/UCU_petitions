@@ -13,7 +13,7 @@ const Petition = ({
   votes
 }) => {
   return (
-    <Link to={`/petition/${_id}`}>
+    <Link className="pet-main-link" to={`/petition/${_id}`}>
       <div className="pet-item">
         <div className="pet-content">
           <div className="pet-left">

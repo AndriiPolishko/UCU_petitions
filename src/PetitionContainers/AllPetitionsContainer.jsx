@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Petition from '../Petition/Petition';
+import "./PetitionContainer.css";
 
 function AllPetitionsContainer() {
   const [petitions, setPetitions] = useState([]);
