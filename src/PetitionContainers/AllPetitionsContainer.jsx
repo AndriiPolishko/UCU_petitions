@@ -6,7 +6,7 @@ function AllPetitionsContainer() {
   const [petitions, setPetitions] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/petitions/`)
+    fetch(`http://localhost:5000/api/petitions/`, {method: "GET"})
       .then((response) => response.json())
       .then((json) => {
         setPetitions(json.petitions);
