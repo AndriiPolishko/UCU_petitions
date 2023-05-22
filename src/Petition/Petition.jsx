@@ -10,7 +10,9 @@ const Petition = ({
   name,
   author,
   date,
-  votes
+  votes,
+  votesNeeded,
+  status
 }) => {
   return (
     <Link className="pet-main-link" to={`/petition/${_id}`}>
@@ -42,7 +44,7 @@ const Petition = ({
               <div className="pet-progress">
                 <div className="progress-full">
                   <span
-                    style={{ width: "2%" }}
+                    style={{ width: `${Math.round(votes / votesNeeded)}%` }}
                     className="progress-current"
                   ></span>
                 </div>
@@ -53,9 +55,9 @@ const Petition = ({
                   src={person}
                   alt="Person Icon"
                 />
-                Триває збір підписів
+                {status || "Триває збір підписів"}
               </div>
-              <div className="pet-timer">Залишилося 93 дні</div>
+              {!(status==="in_process") && <div className="pet-timer">Залишилося 93 дні</div>}
               <Button>
                 <span className="button-text">В ОБРАНЕ</span>
               </Button>
