@@ -9,13 +9,14 @@
 
 .pet-content:hover {
     background: #ffffff;
-    box-shadow: inset 0 15px 15px rgba(204, 204, 204, .12), 0 20px 20px rgba(0, 0, 0, .25);
-    z-index: 9;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
+    transition-duration: 0.3s;
 }
 
 .pet-content {
     display: flex;
     padding: 15px 20px 50px;
+    transition-duration: 0.3s;
 }
 
 .pet-left, .pet-right {
@@ -43,14 +44,12 @@
 }
 
 .pet-link {
-    color: inherit;
     text-decoration: none;
     font-size: 1.5rem;
     line-height: 1.25;
 }
 
 .pet-link:visited {
-    color: inherit;
     text-decoration: none;
 }
 
@@ -175,4 +174,11 @@
 
 .button-text {
     line-height: 30px;
+}
+
+.pet-main-link {
+    color: #ad211f;
+}
+.pet-main-link:visited {
+    color: #7f1716;
 }

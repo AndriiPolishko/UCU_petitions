@@ -2,7 +2,8 @@ import './App.css';
 import PageLayout from './PageLayout/PageLayout';
 import PetitionPage from './PetitionPage/PetitionPage';
 import PetitionForm from './PetitionForm/PetitionForm';
-import Petition from './Petition/Petition';
+import AllPetitionsContainer from './PetitionContainers/AllPetitionsContainer';
+import ConsideredPetitionsContainer from './PetitionContainers/ConsideredPetitionsContainer';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -13,14 +14,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <div>
-            <Petition />
-          </div>
+          <AllPetitionsContainer />
         ),
       },
       {
         path: 'considered',
-        element: <div>considered</div>,
+        element: <ConsideredPetitionsContainer />,
       },
       {
         path: 'answered',
