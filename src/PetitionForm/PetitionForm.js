@@ -32,7 +32,7 @@ function PetitionForm() {
       votesNeeded: 50,
       voters: [],
     };
-    const res = await fetch(`http://localhost:5000/api/petitions/`, {
+    const res = await fetch(process.env.REACT_APP_BASE_URL, {
       method: "POST",
       body: JSON.stringify(petition),
       headers: {
