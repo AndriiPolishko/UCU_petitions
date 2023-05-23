@@ -20,7 +20,7 @@ function AuthHandler() {
   });
   return (
     <div>
-      Name: {params.get("name")},Email: {params.get("email")}
+      Loading...
     </div>
   );
 }
