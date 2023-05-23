@@ -59,7 +59,7 @@ function PetitionPage() {
               {petition && petition.votes} / {petition && petition.votesNeeded}
             </p>
             <p>Статус: {petition.status || "триває збір підписів"}</p>
-            <p>Залишилось часу: {petition && (new Date(petition.date)).toLocaleDateString("uk-UA")}</p>
+            <p>Залишилось часу: {petition && petition.date && (new Date(petition.date)).toLocaleDateString("uk-UA")}</p>
           </div>
           <button className="button">Підписати</button>
         </div>
