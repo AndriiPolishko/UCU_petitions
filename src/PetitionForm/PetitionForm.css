@@ -74,3 +74,12 @@ button[type="submit"]:hover {
 button[type="submit"]:active {
   background-color: #7f1716;
 }
+
+.inactive button {
+  background-color: rgba(127, 23, 22, 0.3);
+  color: black;
+}
+
+.inactive {
+  cursor: default;
+}

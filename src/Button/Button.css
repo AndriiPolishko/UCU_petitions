@@ -27,6 +27,6 @@ button:active {
   transform: translate(0px, 0px);
 }
 
-button.success {
+.success {
   background-color: #5cb85c;
 }

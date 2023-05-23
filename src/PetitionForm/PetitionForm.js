@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./PetitionForm.css";
 import "../App.css";
 import Button from "../Button/Button";
+import UserContext from "../UserContext/UserContex";
 
 function PetitionForm() {
+  const { user, setUser } = useContext(UserContext);
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
-  const [buttonText, setButtonText] = useState("Створити петицію");
+  const [buttonText, setButtonText] = useState(
+    user.loggedIn ? "Створити петицію" : "Залогіньтеся аби створити петицію"
+  );
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -20,7 +24,7 @@ function PetitionForm() {
     e.preventDefault();
     const petition = {
       name: name,
-      author: "dummy_author_name",
+      author: user.name,
       date: Date.now(),
       description: body,
       shortDescription: name,
@@ -46,12 +50,13 @@ function PetitionForm() {
   };
 
   return (
-    <div className="petition-form">
+    <div className={`petition-form${!user.loggedIn ? " inactive" : ""}`}>
       <h2>Створити електронну петицію УКУ</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Назва петиції:</label>
           <input
+            disabled={!user.loggedIn}
             className="petitioin-name"
             id="name"
             type="text"
@@ -63,6 +68,7 @@ function PetitionForm() {
         <div className="form-group">
           <label htmlFor="body">Текст петиції:</label>
           <textarea
+            disabled={!user.loggedIn}
             className="petitioin-textarea"
             id="body"
             value={body}
@@ -71,6 +77,7 @@ function PetitionForm() {
           ></textarea>
         </div>
         <Button
+          disabled={!user.loggedIn}
           type="submit"
           className={buttonText === "Успішно створено!" ? "success" : ""}
         >
