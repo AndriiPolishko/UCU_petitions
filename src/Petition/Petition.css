@@ -96,15 +96,13 @@
     position: relative;
     height: 0.25rem;
     border-radius: 0.125rem;
-    overflow: hidden;
     background: rgba(204, 204, 204, .50);
 }
 
 .progress-current {
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 100%;
+    max-width: 100%;
+    display: block;
     background: #cc3333;
 }
 

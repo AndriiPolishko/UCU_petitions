@@ -44,7 +44,7 @@ const Petition = ({
               <div className="pet-progress">
                 <div className="progress-full">
                   <span
-                    style={{ width: `${Math.round(votes / votesNeeded)}%` }}
+                    style={{ width: `${Math.round(100 * votes / votesNeeded)}%` }}
                     className="progress-current"
                   ></span>
                 </div>
