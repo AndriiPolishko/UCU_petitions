@@ -25,7 +25,10 @@ function PetitionPage() {
       <section className="petitionData">
         <h1>{petition && petition.name}</h1>
         <p>Автор: {petition && petition.author}</p>
-        <p className="date">Дата публікації:{petition && (new Date(petition.date)).toLocaleDateString("uk-UA")}</p>
+        <p className="date">
+          Дата публікації:
+          {petition && new Date(petition.date).toLocaleDateString("uk-UA")}
+        </p>
         <div className="textAndSigners">
           <div className="buttonContainer">
             <button
@@ -46,9 +49,17 @@ function PetitionPage() {
             </button>
           </div>
           {textOrSigners === 1 ? (
-            <div className="textContainer">{(petition && petition.description) && petition.description}</div>
+            <div className="textContainer">
+              {petition && petition.description && petition.description}
+            </div>
           ) : (
-            <div className="textContainer">{petition && petition.voters && petition.voters.map(voter => <li key={voter.id}>{voter.name}</li>)}</div>
+            <div className="textContainer">
+              {petition &&
+                petition.voters &&
+                petition.voters.map((voter) => (
+                  <li key={voter.id}>{voter.name}</li>
+                ))}
+            </div>
           )}
         </div>
       </section>
@@ -59,18 +70,24 @@ function PetitionPage() {
               {petition && petition.votes} / {petition && petition.votesNeeded}
             </p>
             <p>Статус: {petition.status || "триває збір підписів"}</p>
-            <p>Залишилось часу: {petition && petition.date && (new Date(petition.date)).toLocaleDateString("uk-UA")}</p>
+            <p>
+              Залишилось часу:{" "}
+              {petition &&
+                petition.date &&
+                new Date(petition.date).toLocaleDateString("uk-UA")}
+            </p>
           </div>
           <button className="button">Підписати</button>
-        </div>
-        <div className="petitionGist ">
-          {petition && petition.voters &&
-            petition.voters.slice(4).map((user) => (
-              <li key={user.id} className="petitionGist_text">
-                {user.name}
-              </li>
-            ))}
-          <button className="">Додати в обране</button>
+          <div className="petitionGist ">
+            <button className="">Додати в обране</button>
+            {petition &&
+              petition.voters &&
+              petition.voters.slice(4).map((user) => (
+                <li key={user.id} className="petitionGist_text">
+                  {user.name}
+                </li>
+              ))}
+          </div>
         </div>
       </section>
     </div>
