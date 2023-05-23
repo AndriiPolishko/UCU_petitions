@@ -20,7 +20,20 @@ function PetitionPage() {
   }, [id]);
 
   const { user, setUser } = useContext(UserContext);
-  const handleSign = () => {alert("no")};
+  const handleSign = () => {
+    !user.loggedIn
+      ? alert("Залогіньтеся, щоб голосувати")
+      : fetch(`${process.env.REACT_APP_BASE_URL}/${id}`, {
+          method: "PUT",
+          body: JSON.stringify({
+            voters: [...petition.voters, { id: user.googleId, name: user.name }],
+            votes: petition.votes++,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+  };
 
   const [textOrSigners, setTextOrSigners] = useState(1);
   return (
