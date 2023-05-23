@@ -14,7 +14,7 @@ function PageLayout(props) {
     navigate("/petition-form");
   };
 
-  const {user, setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <div className="main">
@@ -86,11 +86,13 @@ function PageLayout(props) {
             <span className="button-text">НОВА ПЕТИЦІЯ</span>
           </Button>
           {!user.loggedIn ? (
-            <Button onClick={() => setUser({loggedIn: true})}>
-              <img src={loginIcon} />
-            </Button>
+            <a className="button-link" href={process.env.REACT_APP_AUTH_URL}>
+              <Button>
+                <img src={loginIcon} />
+              </Button>
+            </a>
           ) : (
-            "logged in!"
+            <img className="user-avatar" src={user.photo} />
           )}
         </div>
       </header>

@@ -87,3 +87,13 @@ footer {
 .footerGroup h4 {
   margin-top: 0;
 }
+
+.user-avatar {
+  height: 46px;
+  border-radius: 3px;
+}
+
+.buttons-link {
+  margin: 0;
+  padding: 0;
+}
