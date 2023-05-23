@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./PetitionPage.css";
+import UserContext from "../UserContext/UserContext";
 
 function PetitionPage() {
   const [petition, setPetition] = useState([]);
@@ -17,6 +18,9 @@ function PetitionPage() {
         console.log("Error:", error);
       });
   }, [id]);
+
+  const { user, setUser } = useContext(UserContext);
+  const handleSign = () => {alert("no")};
 
   const [textOrSigners, setTextOrSigners] = useState(1);
   return (
@@ -70,16 +74,14 @@ function PetitionPage() {
               {petition && petition.votes} / {petition && petition.votesNeeded}
             </p>
             <p>Статус: {petition.status || "триває збір підписів"}</p>
-            <p>
-              Залишилось часу:{" "}
-              {petition &&
-                petition.date &&
-                new Date(petition.date).toLocaleDateString("uk-UA")}
-            </p>
           </div>
-          <button className="button">Підписати</button>
+          <button className="button" onClick={handleSign}>
+            Підписати
+          </button>
           <div className="petitionGist ">
             <button className="">Додати в обране</button>
+          </div>
+          <ul>
             {petition &&
               petition.voters &&
               petition.voters.slice(4).map((user) => (
@@ -87,7 +89,7 @@ function PetitionPage() {
                   {user.name}
                 </li>
               ))}
-          </div>
+          </ul>
         </div>
       </section>
     </div>

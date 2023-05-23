@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useContext } from "react";
-import UserContext from "../UserContext/UserContex";
+import UserContext from "../UserContext/UserContext";
 
 function AuthHandler() {
   const [params, setParams] = useSearchParams();

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./PetitionForm.css";
 import "../App.css";
 import Button from "../Button/Button";
-import UserContext from "../UserContext/UserContex";
+import UserContext from "../UserContext/UserContext";
 
 function PetitionForm() {
   const { user, setUser } = useContext(UserContext);

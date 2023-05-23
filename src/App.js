@@ -6,7 +6,7 @@ import AllPetitionsContainer from "./PetitionContainers/AllPetitionsContainer";
 import ConsideredPetitionsContainer from "./PetitionContainers/ConsideredPetitionsContainer";
 import AuthHandler from "./AuthHandler/AuthHandler";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import UserContext from "./UserContext/UserContex";
+import UserContext from "./UserContext/UserContext";
 import { useState } from "react";
 
 const router = createBrowserRouter([

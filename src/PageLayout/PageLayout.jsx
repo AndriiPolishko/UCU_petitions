@@ -5,7 +5,7 @@ import logo from "../media/ucu_logo.svg";
 import loginIcon from "../media/login_icon.svg";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
-import UserContext from "../UserContext/UserContex";
+import UserContext from "../UserContext/UserContext";
 
 function PageLayout(props) {
   const navigate = useNavigate();
