@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import "./PetitionPage.css";
-import Button from "../Button/Button";
-import CircleDiagram from "../CircleDiagram/CircleDiagram";
-import UserContext from "../UserContext/UserContext";
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import './PetitionPage.css';
+import Button from '../Button/Button';
+import CircleDiagram from '../CircleDiagram/CircleDiagram';
+import UserContext from '../UserContext/UserContext';
 
 function PetitionPage() {
   const [petition, setPetition] = useState([]);
@@ -14,25 +14,30 @@ function PetitionPage() {
     fetch(`${process.env.REACT_APP_BASE_URL}/${id}`)
       .then((response) => response.json())
       .then((json) => {
+        console.log(json.petition);
         setPetition(json.petition);
       })
       .catch((error) => {
-        console.log("Error:", error);
+        console.log('Error:', error);
       });
   }, [id]);
 
   const { user, setUser } = useContext(UserContext);
   const handleSign = () => {
+    const newVotes = petition.votes + 1;
     !user.loggedIn
-      ? alert("Залогіньтеся, щоб голосувати")
+      ? alert('Залогіньтеся, щоб голосувати')
       : fetch(`${process.env.REACT_APP_BASE_URL}/${id}`, {
-          method: "PUT",
+          method: 'PUT',
           body: JSON.stringify({
-            voters: [...petition.voters, { id: user.googleId, name: user.name }],
-            votes: petition.votes++,
+            voters: [
+              ...petition.voters,
+              { id: user.googleId, name: user.name },
+            ],
+            votes: newVotes,
           }),
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         });
   };
@@ -46,7 +51,7 @@ function PetitionPage() {
         <p>Автор: {petition && petition.author}</p>
         <p className="date">
           Дата публікації:
-          {petition && new Date(petition.date).toLocaleDateString("uk-UA")}
+          {petition && new Date(petition.date).toLocaleDateString('uk-UA')}
         </p>
         <div className="textAndSigners">
           <div className="buttonContainer">
@@ -56,8 +61,8 @@ function PetitionPage() {
               }}
               className={
                 textOrSigners === 1
-                  ? "green span-select-left-button"
-                  : "span-select-left-button"
+                  ? 'green span-select-left-button'
+                  : 'span-select-left-button'
               }
             >
               Текст публікації
@@ -68,8 +73,8 @@ function PetitionPage() {
               }}
               className={
                 textOrSigners === 0
-                  ? "green span-select-right-button"
-                  : "span-select-right-button"
+                  ? 'green span-select-right-button'
+                  : 'span-select-right-button'
               }
             >
               Підписанти
@@ -83,40 +88,38 @@ function PetitionPage() {
             <div className="textContainer">
               {petition &&
                 petition.voters &&
-                petition.voters.map((voter) => (
-                  <li key={voter.id}>{voter.name}</li>
-                ))}
+                petition.voters.length > 1 &&
+                petition.voters
+                  .slice(1)
+                  .map((voter) => <li key={voter.id}>{voter.name}</li>)}
             </div>
           )}
         </div>
       </section>
       <section className="importantInfo">
         <div className="importantDataContainer">
-          <CircleDiagram
-            totalSigns={petition.signs}
-            neededSigns={petition.signsNeeded}
-          />
+          {petition.votes && petition.votesNeeded && (
+            <CircleDiagram
+              totalSigns={petition.votes}
+              neededSigns={petition.votesNeeded}
+            />
+          )}
           <div className="importantDataContainer_text">
             <p>
               {petition && petition.votes} / {petition && petition.votesNeeded}
             </p>
-            <p>Статус: {petition.status || "триває збір підписів"}</p>
+            <p>Статус: {petition.status || 'триває збір підписів'}</p>
           </div>
-          <Button className="petition-sign-button">Підписати</Button>
+          <Button
+            className="petition-sign-button"
+            onClick={handleSign}
+          >
             Підписати
-          </button>
+          </Button>
           <div className="petitionGist ">
             <Button className="add-to-chosen-button">Додати в обране</Button>
           </div>
-          <ul>
-            {petition &&
-              petition.voters &&
-              petition.voters.slice(4).map((user) => (
-                <li key={user.id} className="petitionGist_text">
-                  {user.name}
-                </li>
-              ))}
-          </ul>
+          <div>{petition.shortDescription}</div>
         </div>
       </section>
     </div>
