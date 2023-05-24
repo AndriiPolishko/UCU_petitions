@@ -5,25 +5,33 @@ import person from "../media/person.svg";
 import plus from "../media/plus.svg";
 import Button from "../Button/Button";
 
-const Petition = () => {
+const Petition = ({
+  _id,
+  name,
+  author,
+  date,
+  votes,
+  votesNeeded,
+  status
+}) => {
   return (
-    <Link to={"/petition/1"}>
+    <Link className="pet-main-link" to={`/petition/${_id}`}>
       <div className="pet-item">
         <div className="pet-content">
           <div className="pet-left">
             <div className="pet-top">
-              <span className="pet-number">№22/192830-еп</span>
+              <span className="pet-number">{_id}</span>
               <span className="pet-separator">|</span>
-              <span className="pet-tag">#Без теми</span>
+              <span className="pet-tag">{author}</span>
             </div>
             <div className="pet-title">
-              <h2 className="pet-link">ТУТ МАЄ БУТИ ЗАГОЛОВОК.</h2>
+              <h2 className="pet-link">{name}</h2>
             </div>
             <div className="pet-hide">
               <div className="pet-date-container">
                 <div className="pet-date">
-                  <img src={plus} className="fa-plus" /> Дата оприлюднення: 15
-                  травня 2023
+                  <img src={plus} className="fa-plus" /> Дата оприлюднення:{" "}
+                  {(new Date(date)).toLocaleDateString("uk-UA")}
                 </div>
               </div>
             </div>
@@ -31,12 +39,12 @@ const Petition = () => {
           <div className="pet-right">
             <div className="pet-stepper">
               <div className="pet-counts">
-                <strong>3</strong> голоси
+                <strong>{votes}</strong> голоси
               </div>
               <div className="pet-progress">
                 <div className="progress-full">
                   <span
-                    style={{ width: "2%" }}
+                    style={{ width: `${Math.round(100 * votes / votesNeeded)}%` }}
                     className="progress-current"
                   ></span>
                 </div>
@@ -47,9 +55,9 @@ const Petition = () => {
                   src={person}
                   alt="Person Icon"
                 />
-                Триває збір підписів
+                {status || "Триває збір підписів"}
               </div>
-              <div className="pet-timer">Залишилося 93 дні</div>
+              {!(status==="in_process") && <div className="pet-timer">Залишилося 93 дні</div>}
               <Button>
                 <span className="button-text">В ОБРАНЕ</span>
               </Button>

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./PageLayout.css";
 import "../App.css";
 import logo from "../media/ucu_logo.svg";
 import loginIcon from "../media/login_icon.svg";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
+import UserContext from "../UserContext/UserContext";
 
 function PageLayout(props) {
   const navigate = useNavigate();
@@ -12,6 +13,8 @@ function PageLayout(props) {
   const handleButtonClick = () => {
     navigate("/petition-form");
   };
+
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <div className="main">
@@ -79,14 +82,18 @@ function PageLayout(props) {
           </NavLink>
         </div>
         <div className="buttons-wrapper">
-          <Button  onClick={handleButtonClick}>
-            <span className="button-text">
-              НОВА ПЕТИЦІЯ
-            </span>
+          <Button onClick={handleButtonClick}>
+            <span className="button-text">НОВА ПЕТИЦІЯ</span>
           </Button>
-          <Button>
-            <img src={loginIcon} />
-          </Button>
+          {!user.loggedIn ? (
+            <a className="button-link" href={process.env.REACT_APP_AUTH_URL}>
+              <Button>
+                <img src={loginIcon} />
+              </Button>
+            </a>
+          ) : (
+            <img className="user-avatar" src={user.photo} />
+          )}
         </div>
       </header>
       <Outlet />

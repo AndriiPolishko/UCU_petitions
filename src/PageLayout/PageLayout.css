@@ -1,5 +1,5 @@
 .main {
-  width: 100vw;
+  width: 100%;
   height: fit-content;
   min-height: 100vh;
   display: flex;
@@ -86,4 +86,14 @@ footer {
 
 .footerGroup h4 {
   margin-top: 0;
+}
+
+.user-avatar {
+  height: 46px;
+  border-radius: 3px;
+}
+
+.buttons-link {
+  margin: 0;
+  padding: 0;
 }

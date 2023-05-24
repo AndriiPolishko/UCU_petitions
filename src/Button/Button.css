@@ -22,3 +22,7 @@ button:active {
   background-color: #f5efe3;
   transform: translate(0px, 0px);
 }
+
+.success {
+  background-color: #5cb85c;
+}

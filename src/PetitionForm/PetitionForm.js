@@ -1,55 +1,89 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./PetitionForm.css";
 import "../App.css";
 import Button from "../Button/Button";
+import UserContext from "../UserContext/UserContext";
 
 function PetitionForm() {
-  const [theme, setTheme] = useState("");
-  const [text, setText] = useState("");
+  const { user, setUser } = useContext(UserContext);
+  const [name, setName] = useState("");
+  const [body, setBody] = useState("");
+  const [buttonText, setButtonText] = useState(
+    user.loggedIn ? "Створити петицію" : "Залогіньтеся аби створити петицію"
+  );
 
-  const handleThemeChange = (e) => {
-    setTheme(e.target.value);
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   };
 
-  const handleTextChange = (e) => {
-    setText(e.target.value);
+  const handleBodyChange = (e) => {
+    setBody(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Here, you we perform further actions such as sending the petition data to an API or performing other operations
-
-    // Reset the form after submission
-    setTheme("");
-    setText("");
+    const petition = {
+      name: name,
+      author: user.name,
+      date: Date.now(),
+      description: body,
+      shortDescription: name,
+      votes: 0,
+      votesNeeded: 50,
+      voters: [],
+    };
+    const res = await fetch(process.env.REACT_APP_BASE_URL, {
+      method: "POST",
+      body: JSON.stringify(petition),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(petition);
+    if (res.status == 200) {
+      setButtonText("Успішно створено!");
+    } else {
+      setButtonText(`Сталась помилка! (код ${res.status})`);
+    }
+    setName("");
+    setBody("");
   };
 
   return (
-    <div className="petition-form">
+    <div className={`petition-form${!user.loggedIn ? " inactive" : ""}`}>
       <h2>Створити електронну петицію УКУ</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="theme">Назва петиції:</label>
-          <textarea
-            class="petitioin-textarea"
-            id="theme"
-            value={theme}
-            onChange={handleThemeChange}
+          <label htmlFor="name">Назва петиції:</label>
+          <input
+            disabled={!user.loggedIn}
+            className="petitioin-name"
+            id="name"
+            type="text"
+            value={name}
+            onChange={handleNameChange}
             required
-          ></textarea>
+          ></input>
         </div>
         <div className="form-group">
-          <label htmlFor="text">Текст петиції:</label>
+          <label htmlFor="body">Текст петиції:</label>
           <textarea
-            class="petitioin-textarea"
-            id="text"
-            value={text}
-            onChange={handleTextChange}
+            disabled={!user.loggedIn}
+            className="petitioin-textarea"
+            id="body"
+            value={body}
+            onChange={handleBodyChange}
             required
           ></textarea>
         </div>
-        <Button type="submit"> Створити петицію </Button>
+        <Button
+          disabled={!user.loggedIn}
+          type="submit"
+          className={buttonText === "Успішно створено!" ? "success" : ""}
+        >
+          {" "}
+          {buttonText}{" "}
+        </Button>
       </form>
     </div>
   );

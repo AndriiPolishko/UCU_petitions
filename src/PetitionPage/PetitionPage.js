@@ -3,59 +3,51 @@ import { useParams } from "react-router-dom";
 import "./PetitionPage.css";
 import Button from "../Button/Button";
 import CircleDiagram from "../CircleDiagram/CircleDiagram";
+import UserContext from "../UserContext/UserContext";
 
 function PetitionPage() {
-  const { id } = useParams();
-  const testPost = fetch("https://jsonplaceholder.typicode.com/posts/1")
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-  const petitions = [
-    {
-      id: 1,
-      name: "Sample",
-      author: "Andrii",
-      date: "15.05.2023",
-      longDescription: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id reprehenderit magnam, corporis laudantium delectus repellat \
-        sit nobis corrupti praesentium quibusdam maxime pariatur sunt explicabo accusantium debitis necessitatibus perspiciatis \
-        esse consequatur?`,
-      signers: [
-        "first name second name",
-        "first name second name",
-        "first name second name",
-        "first name second name",
-        "first name second name",
-      ],
-      signs: 123,
-      signsNeeded: 321,
-      status: "Очікування",
-    },
-    {
-      id: 2,
-      name: "Sample 2",
-      author: "Roman",
-      date: "15.05.2320",
-      longDescription: `Lorem ipsum dolor, sit amet consectetur adipisicing elit.`,
-      signers: [
-        "first name second name",
-        "first name second name",
-        "first name second name",
-      ],
-      signs: 3,
-      signsNeeded: 100,
-      status: "Очікування",
-    },
-  ];
+  const [petition, setPetition] = useState([]);
 
-  const petition = petitions.find((obj) => obj.id === +id);
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_BASE_URL}/${id}`)
+      .then((response) => response.json())
+      .then((json) => {
+        setPetition(json.petition);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  }, [id]);
+
+  const { user, setUser } = useContext(UserContext);
+  const handleSign = () => {
+    !user.loggedIn
+      ? alert("Залогіньтеся, щоб голосувати")
+      : fetch(`${process.env.REACT_APP_BASE_URL}/${id}`, {
+          method: "PUT",
+          body: JSON.stringify({
+            voters: [...petition.voters, { id: user.googleId, name: user.name }],
+            votes: petition.votes++,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+  };
 
   const [textOrSigners, setTextOrSigners] = useState(1);
   return (
     <div className="petitionPage-container">
-      <h3 className="petitionId">№{petition.id}</h3>
+      <h3 className="petitionId">№{petition && petition._id}</h3>
       <section className="petitionData">
-        <h1>{petition.name}</h1>
-        <p>Автор: {petition.author}</p>
-        <p className="date">Дата публікації: {petition.date}</p>
+        <h1>{petition && petition.name}</h1>
+        <p>Автор: {petition && petition.author}</p>
+        <p className="date">
+          Дата публікації:
+          {petition && new Date(petition.date).toLocaleDateString("uk-UA")}
+        </p>
         <div className="textAndSigners">
           <div className="buttonContainer">
             <Button
@@ -84,9 +76,17 @@ function PetitionPage() {
             </Button>
           </div>
           {textOrSigners === 1 ? (
-            <div className="textContainer">{petition.longDescription}</div>
+            <div className="textContainer">
+              {petition && petition.description && petition.description}
+            </div>
           ) : (
-            <div className="textContainer">{petition.signers}</div>
+            <div className="textContainer">
+              {petition &&
+                petition.voters &&
+                petition.voters.map((voter) => (
+                  <li key={voter.id}>{voter.name}</li>
+                ))}
+            </div>
           )}
         </div>
       </section>
@@ -97,19 +97,26 @@ function PetitionPage() {
             neededSigns={petition.signsNeeded}
           />
           <div className="importantDataContainer_text">
-            <p>Статус: {petition.status}</p>
-            <p>Залишилось часу: Lorem</p>
+            <p>
+              {petition && petition.votes} / {petition && petition.votesNeeded}
+            </p>
+            <p>Статус: {petition.status || "триває збір підписів"}</p>
           </div>
           <Button className="petition-sign-button">Підписати</Button>
-        </div>
-        <div className="petitionGist ">
-          <p className="petitionGist_text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-            dolorum quisquam moles tias! Provident necessitatibus iusto rem
-            doloremque blanditi is minus, fugit delectus impe dit a saepe
-            quaerat doloribus eos, voluptas voluptates excepturi?
-          </p>
-          <Button className="add-to-chosen-button">Додати в обране</Button>
+            Підписати
+          </button>
+          <div className="petitionGist ">
+            <Button className="add-to-chosen-button">Додати в обране</Button>
+          </div>
+          <ul>
+            {petition &&
+              petition.voters &&
+              petition.voters.slice(4).map((user) => (
+                <li key={user.id} className="petitionGist_text">
+                  {user.name}
+                </li>
+              ))}
+          </ul>
         </div>
       </section>
     </div>

@@ -17,6 +17,15 @@
 .pet-content {
   display: flex;
   padding: 15px 20px 50px;
+  background: #ffffff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
+  transition-duration: 0.3s;
+}
+
+.pet-content {
+  display: flex;
+  padding: 15px 20px 50px;
+  transition-duration: 0.3s;
 }
 
 .pet-left,
@@ -45,14 +54,12 @@
 }
 
 .pet-link {
-  color: inherit;
   text-decoration: none;
   font-size: 1.5rem;
   line-height: 1.25;
 }
 
 .pet-link:visited {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -96,19 +103,17 @@
 }
 
 .progress-full {
-  position: relative;
-  height: 0.25rem;
-  border-radius: 0.125rem;
-  overflow: hidden;
-  background: rgba(204, 204, 204, 0.5);
+    position: relative;
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    background: rgba(204, 204, 204, .50);
 }
 
 .progress-current {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: #cc3333;
+    height: 100%;
+    max-width: 100%;
+    display: block;
+    background: #cc3333;
 }
 
 .pet-status {
@@ -176,5 +181,12 @@
 }
 
 .button-text {
-  line-height: 30px;
+    line-height: 30px;
+}
+
+.pet-main-link {
+    color: #ad211f;
+}
+.pet-main-link:visited {
+    color: #7f1716;
 }
