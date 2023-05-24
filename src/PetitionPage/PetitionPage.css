@@ -13,7 +13,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-gap: 10px;
+  grid-gap: 20px;
 }
 
 .petitionId {
@@ -25,7 +25,7 @@
   grid-row: 2;
 }
 
-.petitionData>* {
+.petitionData > * {
   margin-bottom: 25px;
 }
 
@@ -35,11 +35,11 @@
 }
 
 .importantDataContainer {
-  border: 0.5px solid black;
-  border-radius: 10px;
+  border: 0.5px solid rgba(204, 204, 204, 0.5);
 }
 
 .importantDataContainer {
+  padding: 20px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,5 +61,41 @@
   background-color: var(--green);
   color: var(--white);
 }
+.green:hover {
+  background-color: var(--green-hover);
+  color: var(--white);
+}
 
-.petitionGist {}
+.petitionGist_text {
+  margin: 15px 0;
+}
+
+.add-to-chosen-button {
+  margin: 0 auto;
+}
+
+.span-select-left-button,
+.span-select-left-button:hover,
+.span-select-left-button:active {
+  border-radius: 3px 0px 0px 3px;
+}
+
+.span-select-right-button,
+.span-select-right-button:hover,
+.span-select-right-button:active {
+  border-radius: 0px 3px 3px 0px;
+}
+
+.textContainer {
+  margin: 15px 0 0 0;
+  padding: 10px 0 0 0;
+  border-top: 1px solid rgba(204, 204, 204, 0.5);
+}
+
+.importantDataContainer_text {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 0;
+  border-top: 1px solid rgba(204, 204, 204, 0.5);
+  align-items: left;
+}

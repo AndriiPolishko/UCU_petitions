@@ -1,6 +1,8 @@
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./PetitionPage.css";
+import Button from "../Button/Button";
+import CircleDiagram from "../CircleDiagram/CircleDiagram";
 import UserContext from "../UserContext/UserContext";
 
 function PetitionPage() {
@@ -48,22 +50,30 @@ function PetitionPage() {
         </p>
         <div className="textAndSigners">
           <div className="buttonContainer">
-            <button
+            <Button
               onClick={() => {
                 setTextOrSigners(1);
               }}
-              className={textOrSigners === 1 ? "green" : null}
+              className={
+                textOrSigners === 1
+                  ? "green span-select-left-button"
+                  : "span-select-left-button"
+              }
             >
               Текст публікації
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => {
                 setTextOrSigners(0);
               }}
-              className={textOrSigners === 0 ? "green" : null}
+              className={
+                textOrSigners === 0
+                  ? "green span-select-right-button"
+                  : "span-select-right-button"
+              }
             >
               Підписанти
-            </button>
+            </Button>
           </div>
           {textOrSigners === 1 ? (
             <div className="textContainer">
@@ -82,17 +92,21 @@ function PetitionPage() {
       </section>
       <section className="importantInfo">
         <div className="importantDataContainer">
+          <CircleDiagram
+            totalSigns={petition.signs}
+            neededSigns={petition.signsNeeded}
+          />
           <div className="importantDataContainer_text">
             <p>
               {petition && petition.votes} / {petition && petition.votesNeeded}
             </p>
             <p>Статус: {petition.status || "триває збір підписів"}</p>
           </div>
-          <button className="button" onClick={handleSign}>
+          <Button className="petition-sign-button">Підписати</Button>
             Підписати
           </button>
           <div className="petitionGist ">
-            <button className="">Додати в обране</button>
+            <Button className="add-to-chosen-button">Додати в обране</Button>
           </div>
           <ul>
             {petition &&
